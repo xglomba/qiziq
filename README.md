@@ -1,4 +1,8 @@
-# Getting Started with Create React App
+# Instrukcie na spustenie react appky, webstorm odporucam.
+
+
+# Getting Started with Create React App 
+
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
