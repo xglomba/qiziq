@@ -14,10 +14,38 @@
     height: 80%;
     width: 35%;
 
-    svg {
-      display: flex;
-      justify-content: center;
-      margin: auto;
-    }
   }
+
+  svg {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+  }
+
+  h1 {
+    text-align: center;
+    color: azure;
+  }
+
+  .play-button-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 2rem;
+  }
+
+  a.play-button {
+    background-color: palegreen;
+    color: azure;
+    cursor: pointer;
+    padding: 1rem;
+  }
+
+  a.ins-button {
+    background-color: palegreen;
+    color: azure;
+    cursor: pointer;
+    padding: 1rem;
+  }
+
 }

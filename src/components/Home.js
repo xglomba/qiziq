@@ -12,13 +12,10 @@ const Home = () => (
                     <text x="50%" y="58%" text-anchor="middle" font-size="30" font-family="sans-serif" fill="white">?</text>
                 </svg>
                 <div>
-                    <h2>QiziQ</h2>
+                    <h1>QiziQ</h1>
                     <div className="play-button-container">
-                        <ul>
-                            <li> <Link to="/play/instructions">Play</Link>
-
-                            </li>
-                        </ul>
+                        <Link className="play-button" to="/play/instructions">Hraj</Link>
+                        <Link className="ins-button" to="/play/instructions">Instrukcie</Link>
                     </div>
                 </div>
             </section>
