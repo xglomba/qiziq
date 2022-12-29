@@ -5,7 +5,8 @@ import React from "react";
 class ClassComponent extends React.Component {
     render() {
         return(
-            <p>Toto je class component</p>
+            //<p>Toto je class component</p>
+            <p></p>
         );
     }
 }
@@ -13,7 +14,8 @@ class ClassComponent extends React.Component {
 
 const FunctionalComponent = (props) => {
     return(
-        <p>Toto je functional class komponent { props.name }</p>
+        //<p>Toto je functional class komponent { props.name }</p>
+        <p></p>
     );
 };
 export { FunctionalComponent, ClassComponent};
