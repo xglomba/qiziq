@@ -2,6 +2,9 @@ import React, {Fragment} from 'react';
 import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
 
+import { ClassComponent, FunctionalComponent} from "./actualQuiz/test";
+
+
 const Home = () => (
     <Fragment>
         <Helmet><title>QiziQ - Domovská stránka</title></Helmet>
@@ -13,9 +16,11 @@ const Home = () => (
                 </svg>
                 <div>
                     <h1>QiziQ</h1>
+                    <ClassComponent/>
+                    <FunctionalComponent name="Andrej"/>
                     <div className="play-button-container">
-                        <Link className="play-button" to="/play/instructions">Hraj</Link>
-                        <Link className="ins-button" to="/play/instructions">Inštrukcie</Link>
+                        <Link className="play-button" to="/play">Hraj</Link>
+                        <Link className="ins-button" to="/instructions">Inštrukcie</Link>
                     </div>
                 </div>
             </section>
