@@ -1,0 +1,141 @@
+body {
+  //background-image: url('../../assets/q1.png');
+  //background-color: azure;
+  //background-size: cover;
+  //background-position: center;
+  //height: 100vh;
+  //width: 100%;
+  //display: flex;
+  //justify-content: space-around;
+  //color: greenyellow;
+}
+
+.question {
+  background-color: antiquewhite;
+  border-left: 5px solid dodgerblue;
+  width: 80%;
+  margin: 3rem auto 0 auto;
+  padding: 1rem 2rem;
+
+  .lifeline-container {
+    display: flex;
+    justify-content: space-between;
+
+  }
+
+  .lifeline {
+    position: relative;
+    top: -3px;
+  }
+
+  h5 {
+    font-size: 1.5rem;
+    margin-bottom: 3rem;
+    line-height: 1.3;
+    text-align: center;
+  }
+
+  .options-container {
+    display: inline-block;
+    align-items: center;
+    justify-content: center;
+    width: 49%;
+
+  }
+
+
+  .option {
+    background-color: dodgerblue;
+    border-radius: 20px;
+    color: azure;
+    cursor: pointer;
+    transition: all ease-in 200ms;
+    margin: 2rem 2rem auto auto;
+    padding: 1rem;
+    text-align: center;
+    width: 90%;
+
+  }
+
+  .option:hover {
+    transform: scale(1.18);
+    background-color: darken(dodgerblue, 10);
+
+  }
+
+  .button-container {
+    display: flex;
+    justify-content: flex-start;
+    margin: 0 auto 1rem auto;
+    padding: 2rem;
+    width: 80%;
+
+  }
+
+  .button-container button {
+    border: none;
+    color: ghostwhite;
+    cursor: pointer;
+    margin-right: 2rem;
+    padding: 0.5rem 1rem;
+
+  }
+
+  .button-container button:first-child {
+    background-color: royalblue;
+    box-shadow: darkcyan;
+    transition: all ease-in 200ms;
+
+  }
+
+  .button-container button:first-child:hover {
+    transform: scale(1.18);
+    background-color: darken(royalblue, 20);
+
+  }
+
+  .button-container button:nth-child(2) {
+    background-color: springgreen;
+    box-shadow: darkcyan;
+    transition: all ease-in 200ms;
+
+  }
+
+  .button-container button:nth-child(2):hover {
+    transform: scale(1.18);
+    background-color: lighten(darkgreen, 50);
+
+  }
+
+  .button-container button:nth-child(3) {
+    background-color: palevioletred;
+    box-shadow: darkcyan;
+    transition: all ease-in 200ms;
+
+  }
+
+  .button-container button:nth-child(3):hover {
+    transform: scale(1.18);
+    background-color: darken(red, 1);
+
+  }
+
+  h2 {
+    text-align: left;
+    font-weight: lighter;
+    animation: none;
+  }
+
+  h2:hover {
+    animation: wiggle 2s infinite;
+  }
+
+  @keyframes wiggle {
+    0% { transform: rotate(0deg); }
+    80% { transform: rotate(2deg); }
+    85% { transform: rotate(5deg); }
+    95% { transform: rotate(-5deg); }
+    100% { transform: rotate(0deg); }
+  }
+
+}

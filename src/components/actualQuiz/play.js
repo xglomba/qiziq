@@ -20,18 +20,19 @@ class Play extends Component {
                     <title>QiziQ</title>
                 </Helmet>
                 <div className="question">
+                    <h2>Uhadni ma!</h2>
                     <div className="lifeline-container">
                         <p>
-                            <span className="mdi mdi-set-center mdi-24px mdi-lightbulb-fluorescent-tube-outline"></span>2
+                            <span className="mdi mdi-set-center mdi-24px mdi-lightbulb-fluorescent-tube-outline"></span><span className="lifeline">3</span>
                         </p>
                         <p>
-                            <span className="mdi mdi-lightbulb-on-outline mdi-24px mdi-lightbulb-fluorescent-tube-outline"></span>5
+                            <span className="mdi mdi-lightbulb-on-outline mdi-24px mdi-lightbulb-fluorescent-tube-outline"></span><span className="lifeline">5</span>
                         </p>
                     </div>
                     <div>
                         <p>
-                            <span>1/15</span>
-                            21:14<span className="mdi mdi-clock-outline mdi-24px">1/5</span>
+                            <span className="left">1/15</span>
+                            <span className="right"><span className="lifeline">2:14</span><span className="mdi mdi-clock-outline mdi-24px"></span></span>
                         </p>
                     </div>
                     <h5>Kto je najkrajsi na svete?</h5>
