@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const Home = () => (
     <Fragment>
-        <Helmet><title>QiziQ - Domovska stranka</title></Helmet>
+        <Helmet><title>QiziQ - Domovská stránka</title></Helmet>
         <div id="home">
             <section>
                 <svg width="100" height="100">
@@ -15,7 +15,7 @@ const Home = () => (
                     <h1>QiziQ</h1>
                     <div className="play-button-container">
                         <Link className="play-button" to="/play/instructions">Hraj</Link>
-                        <Link className="ins-button" to="/play/instructions">Instrukcie</Link>
+                        <Link className="ins-button" to="/play/instructions">Inštrukcie</Link>
                     </div>
                 </div>
             </section>
