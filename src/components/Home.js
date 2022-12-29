@@ -8,8 +8,8 @@ const Home = () => (
         <div id="home">
             <section>
                 <svg width="100" height="100">
-                    <circle cx="50" cy="50" r="40" stroke="#0066cc" stroke-width="4" fill="#0066cc" />
-                    <text x="50%" y="58%" text-anchor="middle" font-size="30" font-family="sans-serif" fill="white">?</text>
+                    <circle cx="50" cy="50" r="40" stroke="#0066cc" strokeWidth="4" fill="#0066cc" />
+                    <text x="50%" y="58%" textAnchor="middle" fontSize="30" fontFamily="sans-serif" fill="white">?</text>
                 </svg>
                 <div>
                     <h1>QiziQ</h1>
