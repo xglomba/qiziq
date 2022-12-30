@@ -15,5 +15,14 @@
     "optionC": "Samsung",
     "optionD": "Samsong",
     "answer": "Jan Sefcik"
+  },
+
+  {
+    "question": "Drzitelom akeho titulu je Karolina Zakova?",
+    "optionA": "Html",
+    "optionB": "Jackson silver hand",
+    "optionC": "CSS",
+    "optionD": "XML",
+    "answer": "Jan Sefcik"
   }
 ]
