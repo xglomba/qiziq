@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { Helmet } from "react-helmet";
+import M from 'materialize-css'
 
 import questions from '../../questions.json'
 
@@ -59,7 +60,7 @@ class Play extends Component {
             currentQ = questions[currQIndex];
             nextQ = questions[currQIndex + increment];
             prevQ = questions[currQIndex - increment];
-            const answer = currQIndex.answer;
+            const answer = currentQ.answer;
 
             this.setState({
                 currentQ: currentQ,
@@ -75,6 +76,50 @@ class Play extends Component {
             counter: 11
         });
     };
+
+    handleOptionClick = (event) => {
+        //console.log('click');
+        //alert();
+       // M.toast({
+       //    html: 'vybral si'
+        //});
+        console.log(event.target.innerHTML, this.state.answer)
+        if (event.target.innerHTML === this.state.answer) {
+            this.correctAnswer();
+        } else {
+            this.wrongAnswer();
+        }
+    }
+
+    correctAnswer = (event) => {
+        navigator.vibrate(500);
+        M.toast({
+            html: 'Spravne!',
+            classes: 'toast-valid',
+            displayLength: 1500
+        });
+        this.setState(prevState => ({
+            score: prevState.score + 1,
+            currectA: prevState.currectA + 1,
+            currentQIndex: prevState.currentQIndex + 1,
+            numOfQAnswered: prevState.numOfQAnswered + 1
+        }));
+    }
+
+    wrongAnswer = (event) => {
+        navigator.vibrate(1250);
+        M.toast({
+            html: 'Nespravne!',
+            classes: 'toast-invalid',
+            displayLength: 1500
+        });
+        this.setState(prevState => ({
+            wrongA: prevState.wrongA + 1,
+            currentQIndex: prevState.currentQIndex + 1,
+            numOfQAnswered: prevState.numOfQAnswered + 1
+        }));
+    }
+
     render() {
         //console.log(questions)
 
@@ -103,12 +148,12 @@ class Play extends Component {
                     </div>
                     <h5>{ currentQ.question }</h5>
                     <div className="options-container">
-                        <p className="option">{ currentQ.optionA }</p>
-                        <p className="option">{ currentQ.optionB }</p>
+                        <p onClick={ this.handleOptionClick } className="option">{ currentQ.optionA }</p>
+                        <p onClick={ this.handleOptionClick } className="option">{ currentQ.optionB }</p>
                     </div>
                     <div className="options-container">
-                        <p className="option">{ currentQ.optionC }</p>
-                        <p className="option">{ currentQ.optionD }</p>
+                        <p onClick={ this.handleOptionClick } className="option">{ currentQ.optionC }</p>
+                        <p onClick={ this.handleOptionClick } className="option">{ currentQ.optionD }</p>
                     </div>
                     <div className="button-container">
                         <button>Predchadzajuca</button>

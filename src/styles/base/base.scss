@@ -6,3 +6,22 @@
 body {
   font-family: Cantarell, serif;
 }
+
+#toast-container {
+  top: auto !important;
+  right: auto !important;
+  bottom: 10%;
+  left:7%;
+}
+
+.toast-invalid {
+  background-color: red !important;
+  border-radius: 5px !important;
+  color: azure !important;
+}
+
+.toast-valid {
+  background-color: green !important;
+  border-radius: 5px !important;
+  color: azure !important;
+}

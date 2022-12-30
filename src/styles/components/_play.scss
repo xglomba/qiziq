@@ -138,4 +138,11 @@ body {
     100% { transform: rotate(0deg); }
   }
 
+  #toast-container {
+    top: auto !important;
+    right: auto !important;
+    bottom: 10%;
+    left:7%;
+  }
+
 }
