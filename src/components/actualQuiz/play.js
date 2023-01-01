@@ -1,6 +1,8 @@
-import React, { Component, Fragment } from "react";
+import React, { useContext, Component, Fragment } from "react";
 import { Helmet } from "react-helmet";
 import M from 'materialize-css';
+import { useLocation } from "react-router-dom";
+
 
 import questions from '../../questions.json';
 import correctASound from '../../assets/sounds/suc.mp3';
@@ -85,8 +87,8 @@ class Play extends Component {
     handleOptionClick = (event) => {
         //console.log('click');
         //alert();
-       // M.toast({
-       //    html: 'vybral si'
+        // M.toast({
+        //    html: 'vybral si'
         //});
         console.log(event.target.innerHTML, this.state.answer)
         //document.getElementById("correctS").play();
@@ -105,7 +107,70 @@ class Play extends Component {
         }
     };
 
-    handleButtonClick = () => {
+    handleNextButtonClick = () => {
+        let rr = this.state;
+        this.playButton();
+
+        if (rr.nextQ !== undefined) {
+            //console.log(rr.currQIndex, prev + increment);
+            this.setState(prevState => ({
+                currQIndex: prevState.currQIndex + increment
+
+            }), () => {
+                this.displayQuestion(rr.state , rr.currentQ, rr.nextQ, rr.prevQ)
+            });
+
+        }
+    };
+
+    handlePrevButtonClick = () => {
+        let rr = this.state;
+        this.playButton();
+
+        if (rr.prevQ !== undefined) {
+            //console.log(rr.currQIndex, prev + increment);
+            this.setState(prevState => ({
+                currQIndex: prevState.currQIndex - increment
+
+            }), () => {
+                this.displayQuestion(rr.state , rr.currentQ, rr.nextQ, rr.prevQ)
+            });
+
+        }
+    };
+
+    handleQuitButtonClick = () => {
+        //let rr = this.state;
+        this.playButton();
+        const location = useLocation();
+        //const history = useHistory();
+
+        //this.props.history('/');
+        if (window.confirm("Naozaj chces zahodit pokus?")) {
+            //history.push("/");
+            //history.push("www.google.com");
+        }
+    };
+
+    handleButtonClick = (event) => {
+
+        switch (event.target.id) {
+            case "next-button":
+                this.handleNextButtonClick();
+                console.log("hehe");
+                break;
+            case "prev-button":
+                this.handlePrevButtonClick();
+                console.log("hehe back");
+                break;
+            case "quit-button":
+                this.handleQuitButtonClick();
+                console.log("hehe back 3");
+                break;
+            default:
+                console.log("click err")
+                break;
+        }
         this.playButton()
     };
 
@@ -151,7 +216,7 @@ class Play extends Component {
     render() {
         //console.log(questions)
 
-        const { currentQ } = this.state;
+        const { currentQ, currQIndex } = this.state;
 
         return (
             <Fragment>
@@ -175,7 +240,7 @@ class Play extends Component {
                     </div>
                     <div>
                         <p>
-                            <span className="left" style={{ float:'left' }}> { this.state.currQIndex + increment } / { this.state.numOfQ } </span>
+                            <span className="left" style={{ float:'left' }}> { currQIndex + increment } / { this.state.numOfQ } </span>
                             <span className="right"><span className="lifeline">2:14</span><span className="mdi mdi-clock-outline mdi-24px"></span></span>
                         </p>
                     </div>
@@ -189,9 +254,9 @@ class Play extends Component {
                         <p onClick={ this.handleOptionClick } className="option">{ currentQ.optionD }</p>
                     </div>
                     <div className="button-container">
-                        <button onClick={ this.playButton }>Predchadzajuca</button>
-                        <button onClick={ this.playButton }>Nasledujuca</button>
-                        <button onClick={ this.playButton }>Vzdavam sa!</button>
+                        <button id="prev-button" onClick={ this.handleButtonClick }>Predchadzajuca</button>
+                        <button id="next-button" onClick={ this.handleButtonClick }>Nasledujuca</button>
+                        <button id="quit-button" onClick={ this.handleButtonClick }>Vzdavam sa!</button>
                     </div>
 
                 </div>

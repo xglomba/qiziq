@@ -1,5 +1,5 @@
 import React from "react";
-import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
+import { withRouter, BrowserRouter as Router, Route, Routes} from "react-router-dom";
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 import Home from './components/Home';
@@ -9,12 +9,12 @@ import Play from "./components/actualQuiz/play";
 
 function App() {
     return (
-        <TransitionGroup>
-            <CSSTransition
+        //<TransitionGroup>
+         //   <CSSTransition
             //key={ location.key }
-            timeout={500}
-            classname="fade"
-            >
+         //   timeout={500}
+         //   classname="fade"
+        //    >
                 <Router>
 
                     <Routes>
@@ -26,8 +26,8 @@ function App() {
                     </Routes>
 
                 </Router>
-            </CSSTransition>
-        </TransitionGroup>
+         //   </CSSTransition>
+    //    </TransitionGroup>
     );
 }
 
