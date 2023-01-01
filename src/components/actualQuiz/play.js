@@ -99,11 +99,13 @@ class Play extends Component {
             displayLength: 1500
         });
         this.setState(prevState => ({
-            score: prevState.score + 1,
-            currectA: prevState.currectA + 1,
-            currentQIndex: prevState.currentQIndex + 1,
-            numOfQAnswered: prevState.numOfQAnswered + 1
-        }));
+            score: prevState.score + increment,
+            currectA: prevState.currectA + increment,
+            currQIndex: prevState.currQIndex + increment,
+            numOfQAnswered: prevState.numOfQAnswered + increment
+        }), () => { //callback funkcia na novy stav, velmi uzitocne
+            this.displayQuestion(this.state.questions, this.state.currentQ, this.state.nextQ, this.state.prevQ)
+        });
     }
 
     wrongAnswer = (event) => {
@@ -114,10 +116,12 @@ class Play extends Component {
             displayLength: 1500
         });
         this.setState(prevState => ({
-            wrongA: prevState.wrongA + 1,
-            currentQIndex: prevState.currentQIndex + 1,
-            numOfQAnswered: prevState.numOfQAnswered + 1
-        }));
+            wrongA: prevState.wrongA + increment,
+            currQIndex: prevState.currQIndex + increment,
+            numOfQAnswered: prevState.numOfQAnswered + increment
+        }), () => {
+            this.displayQuestion(this.state.questions, this.state.currentQ, this.state.nextQ, this.state.prevQ)
+        });
     }
 
     render() {

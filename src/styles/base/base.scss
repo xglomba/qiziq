@@ -1,10 +1,12 @@
 * {
   padding: 0.1rem;
   margin: 0.1rem;
+
 }
 
 body {
   font-family: Cantarell, serif;
+
 }
 
 #toast-container {
@@ -12,16 +14,19 @@ body {
   right: auto !important;
   bottom: 10%;
   left:7%;
+
 }
 
 .toast-invalid {
   background-color: red !important;
-  border-radius: 5px !important;
+  border-radius: 3px !important;
   color: azure !important;
+
 }
 
 .toast-valid {
   background-color: green !important;
-  border-radius: 5px !important;
+  border-radius: 3px !important;
   color: azure !important;
+
 }
