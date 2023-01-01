@@ -1,8 +1,11 @@
 import React, { Component, Fragment } from "react";
 import { Helmet } from "react-helmet";
-import M from 'materialize-css'
+import M from 'materialize-css';
 
-import questions from '../../questions.json'
+import questions from '../../questions.json';
+import correctASound from '../../assets/sounds/suc.mp3';
+import incorrectASound from '../../assets/sounds/fail.mp3';
+import click from '../../assets/sounds/click.mp3';
 
 var increment = 1;
 
@@ -33,7 +36,7 @@ class Play extends Component {
             nextQ: {},
             prevQ:{},
             answer:'',
-            numbOfQ: 0,
+            numOfQ: 0,
             numOfQAnswered: 0,
             currQIndex: 0,
             score: 0,
@@ -66,7 +69,9 @@ class Play extends Component {
                 currentQ: currentQ,
                 nextQ: nextQ,
                 prevQ: prevQ,
-                answer: answer
+                numOfQ: questions.length,
+                answer: answer,
+                currQIndex: currQIndex
             });
         }
     };
@@ -84,12 +89,31 @@ class Play extends Component {
        //    html: 'vybral si'
         //});
         console.log(event.target.innerHTML, this.state.answer)
+        //document.getElementById("correctS").play();
         if (event.target.innerHTML === this.state.answer) {
+            setTimeout(() => {
+                document.getElementById("correctS").play();
+            }, 200);
             this.correctAnswer();
+
         } else {
+            setTimeout(() => {
+                document.getElementById("incorrectS").play();
+            }, 200);
             this.wrongAnswer();
+
         }
-    }
+    };
+
+    handleButtonClick = () => {
+        this.playButton()
+    };
+
+    playButton = () => {
+        setTimeout(() => {
+            document.getElementById("click").play();
+        }, 1);
+    };
 
     correctAnswer = (event) => {
         navigator.vibrate(500);
@@ -134,6 +158,11 @@ class Play extends Component {
                 <Helmet>
                     <title>QiziQ</title>
                 </Helmet>
+                <Fragment>
+                    <audio id="correctS" src= { correctASound }></audio>
+                    <audio id="incorrectS" src= { incorrectASound }></audio>
+                    <audio id="click"  src= { click }></audio>
+                </Fragment>
                 <div className="question">
                     <h2>Uhadni ma!</h2>
                     <div className="lifeline-container">
@@ -146,7 +175,7 @@ class Play extends Component {
                     </div>
                     <div>
                         <p>
-                            <span className="left">1/15</span>
+                            <span className="left" style={{ float:'left' }}> { this.state.currQIndex + increment } / { this.state.numOfQ } </span>
                             <span className="right"><span className="lifeline">2:14</span><span className="mdi mdi-clock-outline mdi-24px"></span></span>
                         </p>
                     </div>
@@ -160,9 +189,9 @@ class Play extends Component {
                         <p onClick={ this.handleOptionClick } className="option">{ currentQ.optionD }</p>
                     </div>
                     <div className="button-container">
-                        <button>Predchadzajuca</button>
-                        <button>Nasledujuca</button>
-                        <button>Vzdavam sa!</button>
+                        <button onClick={ this.playButton }>Predchadzajuca</button>
+                        <button onClick={ this.playButton }>Nasledujuca</button>
+                        <button onClick={ this.playButton }>Vzdavam sa!</button>
                     </div>
 
                 </div>

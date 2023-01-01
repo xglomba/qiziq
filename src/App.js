@@ -6,6 +6,7 @@ import Home from './components/Home';
 import QuizInstructions from "./components/actualQuiz/quizInstructions";
 import Play from "./components/actualQuiz/play";
 
+
 function App() {
     return (
         <TransitionGroup>
