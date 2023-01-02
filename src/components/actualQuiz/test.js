@@ -2,6 +2,7 @@
 
 import React from "react";
 
+
 class ClassComponent extends React.Component {
     render() {
         return(
@@ -18,4 +19,8 @@ const FunctionalComponent = (props) => {
         <p></p>
     );
 };
+
+const Homee = (props) => {
+
+}
 export { FunctionalComponent, ClassComponent};

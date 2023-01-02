@@ -5,6 +5,7 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import Home from './components/Home';
 import QuizInstructions from "./components/actualQuiz/quizInstructions";
 import Play from "./components/actualQuiz/play";
+//import Sensor from "./components/actualQuiz/sensor";
 
 
 function App() {
