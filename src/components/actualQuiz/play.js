@@ -142,13 +142,12 @@ class Play extends Component {
     handleQuitButtonClick = () => {
         //let rr = this.state;
         this.playButton();
-        const location = useLocation();
-        //const history = useHistory();
 
         //this.props.history('/');
         if (window.confirm("Naozaj chces zahodit pokus?")) {
             //history.push("/");
-            //history.push("www.google.com");
+            M.toast({html: 'Domov!'})
+            this.props.history.push("/"); // ??????
         }
     };
 
