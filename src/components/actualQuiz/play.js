@@ -1,7 +1,8 @@
 import React, { useContext, Component, Fragment } from "react";
 import { Helmet } from "react-helmet";
 import M from 'materialize-css';
-import { useLocation } from "react-router-dom";
+import {createBrowserRouter, useNavigate} from "react-router-dom";
+import { Draggable, Droppable } from 'react-drag-and-drop';
 
 
 import questions from '../../questions.json';
@@ -142,13 +143,22 @@ class Play extends Component {
     handleQuitButtonClick = () => {
         //let rr = this.state;
         this.playButton();
+        const navigate = useNavigate();
 
-        //this.props.history('/');
+        /*this.props.history('/');
         if (window.confirm("Naozaj chces zahodit pokus?")) {
             //history.push("/");
             M.toast({html: 'Domov!'})
-            this.props.history.push("/"); // ??????
+            navigate('/')
+            //this.props.history.push("/"); // ??????
+        }*/
+        function handle() {
+            //event.preventDefault();
+            navigate('/');
         }
+
+        console.log("hehe back")
+        handle();
     };
 
     handleButtonClick = (event) => {
@@ -212,6 +222,11 @@ class Play extends Component {
         });
     }
 
+    handleDrop(data, event) {
+        // This method runs when the data drops
+        console.log(data); // 'bar'
+    }
+
     render() {
         //console.log(questions)
 
@@ -258,6 +273,15 @@ class Play extends Component {
                         <button id="quit-button" onClick={ this.handleButtonClick }>Vzdavam sa!</button>
                     </div>
 
+                </div>
+                <div>
+                    <Draggable type="foo" data="bar">
+                        <div>Drag me!</div>
+                    </Draggable>
+
+                    <Droppable types={['foo']} onDrop={this.handleDrop}>
+                        <div>Drop here!</div>
+                    </Droppable>
                 </div>
 
             </Fragment>
