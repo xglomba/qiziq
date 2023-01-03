@@ -24,5 +24,41 @@
     "optionC": "CSS",
     "optionD": "XML",
     "answer": "Jan Sefcik"
+  },
+
+  {
+    "question": "Kto/čo je Carolina Reaper?",
+    "optionA": "Čili paprička",
+    "optionB": "Ján Sefcik",
+    "optionC": "Tvoja mama",
+    "optionD": "Speváčka",
+    "answer": "Čili paprička"
+  },
+
+  {
+    "question": "Aké je hlavné mesto planéty Zem?",
+    "optionA": "Žiadne",
+    "optionB": "Dolný Kubín",
+    "optionC": "Vranov nad Topľov",
+    "optionD": "Tak vám dobre jebe",
+    "answer": "Žiadne"
+  },
+
+  {
+    "question": "Čo znamená RFC?",
+    "optionA": "Request for comments",
+    "optionB": "Kali",
+    "optionC": "Relatively flaccid cockraoch",
+    "optionD": "Repeatedly fluctuating comrade",
+    "answer": "Request for comments"
+  },
+
+  {
+    "question": "Naspievala Rihanna song S&M?",
+    "optionA": "Ja nefiem uš",
+    "optionB": "Nie",
+    "optionC": "Áno",
+    "optionD": "Deveď",
+    "answer": "Áno"
   }
 ]

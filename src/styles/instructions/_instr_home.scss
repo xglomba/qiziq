@@ -1,0 +1,60 @@
+#penis {
+  background-image: url('../../assets/bg.png');
+  background-size: cover;
+  background-position: center;
+  height: 98vh;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  margin-left: 0;
+
+
+  section {
+    background-color: rgba(0,0,0,0.5);
+    padding-left: 2rem;
+    padding-right: 2rem;
+    height: 85%;
+    width: 40%;
+
+  }
+
+  h1 {
+    text-align: center;
+    color: azure;
+    font-weight: 500;
+  }
+
+  .play-button-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 2rem;
+  }
+
+  a.play-button {
+    background-color: #09c1ef;
+    color: azure;
+    cursor: pointer;
+    padding: 1rem;
+    width:45%;
+    border-radius: 15px;
+    text-align: center;
+    display: block;
+    transition: all ease-in 100ms;
+
+  }
+
+  a.play-button:hover {
+    width: 49%;
+    transform: rotate(10deg);
+    background-color: darken(dodgerblue, 20);
+  }
+
+  li {
+    font-size: larger;
+    span {
+      color: brown;
+    }
+  }
+
+}
