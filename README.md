@@ -5,6 +5,8 @@ pre zbuildenie :
     2. sudo npm install -g serve
     3. npx serve -s build
 
+    na pull z repa vyuzivaj v pravom hornom rohu modru sipku do lavo-dola. Potom Marge.
+
 # Getting Started with Create React App 
 
 
