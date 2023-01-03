@@ -5,6 +5,7 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import Home from './components/Home';
 import QuizInstructions from "./components/actualQuiz/quizInstructions";
 import Play from "./components/actualQuiz/play";
+import Summary from "./components/actualQuiz/summary";
 //import Sensor from "./components/actualQuiz/sensor";
 
 
@@ -24,6 +25,7 @@ function App() {
                             <Route path="/" element={<Home />} exact > </Route>
                             <Route path="/instructions" element={<QuizInstructions />} exact > </Route>
                             <Route path="/play" element={<Play />} exact > </Route>
+                            <Route path="/summary" element={<Summary/>} exact > </Route>
 
                     </Routes>
 

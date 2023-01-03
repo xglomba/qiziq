@@ -1,7 +1,7 @@
 import React, { useContext, Component, Fragment } from "react";
 import { Helmet } from "react-helmet";
 import M from 'materialize-css';
-import {createBrowserRouter, useNavigate} from "react-router-dom";
+import {createBrowserRouter, Link, useNavigate, withRouter} from "react-router-dom";
 import { Draggable, Droppable } from 'react-drag-and-drop';
 
 import questions from '../../questions.json';
@@ -10,6 +10,7 @@ import incorrectASound from '../../assets/sounds/fail.mp3';
 import click from '../../assets/sounds/click.mp3';
 
 let increment = 1;
+//let navigate = useNavigate();
 
 function isEmpty(strIn)
 {
@@ -23,6 +24,7 @@ function isEmpty(strIn)
     }
     else return strIn === "";
 }
+
 
 
 const isEmpty2 = (value) =>
@@ -51,12 +53,23 @@ class Play extends Component {
             time: {},
             prevRandomNumber: []
         };
+        this.interval = null;
 
+    }
+     GoHome = () => {
+        //let navigate = useNavigate()
+        //navigate("/");
+        console.log("haha");
     }
 
     componentDidMount() {
         const { state } = this;
-        this.displayQuestion(state.questions, state.currentQ, state.nextQ, state.prevQ)
+        this.displayQuestion(state.questions, state.currentQ, state.nextQ, state.prevQ);
+        this.startTimer();
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.interval);
     }
 
     displayQuestion = (questions = this.state.questions, currentQ, nextQ, prevQ) => {
@@ -144,7 +157,7 @@ class Play extends Component {
         }
     };
 
-    handleQuitButtonClick = () => {
+    HandleQuitButtonClick = () => {
         //let rr = this.state;
         this.playButton();
         const navigate = useNavigate();
@@ -158,7 +171,9 @@ class Play extends Component {
         }*/
         function handle() {
             //event.preventDefault();
-            navigate('/');
+            //let navigate = useNavigate();
+            //navigate('/');
+          //  GoHome();
         }
 
         console.log("hehe back")
@@ -177,7 +192,7 @@ class Play extends Component {
                 console.log("hehe back");
                 break;
             case "quit-button":
-                this.handleQuitButtonClick();
+                this.HandleQuitButtonClick();
                 console.log("hehe back 3");
                 break;
             default:
@@ -206,7 +221,11 @@ class Play extends Component {
             currQIndex: prevState.currQIndex + increment,
             numOfQAnswered: prevState.numOfQAnswered + increment
         }), () => { //callback funkcia na novy stav, velmi uzitocne
-            this.displayQuestion(this.state.questions, this.state.currentQ, this.state.nextQ, this.state.prevQ)
+            if (this.state.nextQ === undefined) {
+                this.endGame();
+            } else {
+                this.displayQuestion(this.state.questions, this.state.currentQ, this.state.nextQ, this.state.prevQ);
+            }
         });
     }
 
@@ -222,7 +241,11 @@ class Play extends Component {
             currQIndex: prevState.currQIndex + increment,
             numOfQAnswered: prevState.numOfQAnswered + increment
         }), () => {
-            this.displayQuestion(this.state.questions, this.state.currentQ, this.state.nextQ, this.state.prevQ)
+            if (this.state.nextQ === undefined) {
+                this.endGame();
+            } else {
+                this.displayQuestion(this.state.questions, this.state.currentQ, this.state.nextQ, this.state.prevQ);
+            }
         });
     }
 
@@ -317,10 +340,72 @@ class Play extends Component {
         });
     }
 
+    startTimer = () => {
+        const timeAll = Date.now() + 180000;
+        this.interval = setInterval(() => {
+            const now = new Date();
+            const distance = timeAll - now;
+
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / ( 1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / ( 1000));
+
+            if (distance < 0) {
+                M.toast({
+                    html: "Vyprsal ti cas!",
+                    classes: 'toast-invalid',
+                    displayLength: 1500
+                });
+                clearInterval(this.interval);
+                this.setState({
+                    time: {
+                        minutes: 0,
+                        seconds: 0
+                    }
+                }, () => {
+                    alert("Vyprsal ti cas!");
+                    this.endGame();
+                });
+            } else {
+                this.setState({
+                   time: {
+                       minutes,
+                       seconds
+                   }
+                });
+            }
+        }, 1000)
+    }
+
+    endGame = () => {
+        alert("Dokoncil si Quiz!");
+        M.toast({
+            html: 'Dokoncil si quiz!!',
+            classes: 'toast-valid',
+            displayLength: 1500
+        });
+
+        //const state = this;
+        const playerStat = {
+            score: this.state.score,
+            numOfQ: this.state.numOfQ,
+            numOfQAnswered: this.state.numOfQAnswered,
+            currectA: this.state.currectA,
+            wrongA: this.state.wrongA,
+            hints: 5 - this.state.hints,
+            fiftySixtyUsed: 2 - this.state.fiftySixty
+
+        };
+
+        console.log(playerStat);
+        setTimeout(() => {
+            this.props.history.push("/"); // preco to nic nevracia neviem
+        }, 1000);
+    }
+
     render() {
         //console.log(questions)
 
-        const { currentQ, currQIndex, hints, fiftySixty } = this.state;
+        const { currentQ, currQIndex, hints, fiftySixty, time } = this.state;
 
         return (
             <Fragment>
@@ -347,7 +432,7 @@ class Play extends Component {
                     <div>
                         <p>
                             <span className="left" style={{ float:'left' }}> { currQIndex + increment } / { this.state.numOfQ } </span>
-                            <span className="right"><span className="lifeline">2:14</span><span className="mdi mdi-clock-outline mdi-24px"></span></span>
+                            <span className="right"><span className="lifeline">{ time.minutes }:{ time.seconds }</span><span className="mdi mdi-clock-outline mdi-24px"></span></span>
                         </p>
                     </div>
                     <h5>{ currentQ.question }</h5>
@@ -363,6 +448,7 @@ class Play extends Component {
                         <button id="prev-button" onClick={ this.handleButtonClick }>Predchadzajuca</button>
                         <button id="next-button" onClick={ this.handleButtonClick }>Nasledujuca</button>
                         <button id="quit-button" onClick={ this.handleButtonClick }>Vzdavam sa!</button>
+                        <Link to="/summary">Sumar</Link>
                     </div>
                     <div>
                         <Draggable type="foo" data="bar">
