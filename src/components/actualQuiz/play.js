@@ -269,6 +269,46 @@ class Play extends Component {
         //console.log(event.target.innerHTML);
     }
 
+    fiftyDrop = () => {
+        console.log("asd");
+
+
+        if (this.state.fiftySixty > 0 || this.state.fiftySixty !== 0) {
+            const options = Array.from(document.querySelectorAll(".option"));
+            //console.log(options);
+
+            let indexOfAnswer;
+
+            options.forEach((option, index) => {
+                if (option.innerHTML.toLowerCase() === this.state.answer.toLowerCase()) {
+                    indexOfAnswer = index;
+                }
+            });
+
+
+            while (true) {
+                const random = Math.round(Math.random() * 3);
+
+                if (random === indexOfAnswer && !this.state.prevRandomNumber.includes(random)) {
+                    options.forEach((option, index) => {
+                        if (index === random) {
+                            option.style.backgroundColor = "green";
+                            this.setState((prevState) => ({
+                                fiftySixty: prevState.fiftySixty - increment,
+                                prevRandomNumber: prevState.prevRandomNumber.concat(random)
+                            }));
+                        }
+                    });
+                    break; //wow
+                }
+                if (this.state.prevRandomNumber.length >= 3) {
+                    break;
+                }
+            }
+
+        }
+    }
+
     showOptions = () => {
         const options = Array.from(document.querySelectorAll(".option"));
 
@@ -280,7 +320,7 @@ class Play extends Component {
     render() {
         //console.log(questions)
 
-        const { currentQ, currQIndex, hints } = this.state;
+        const { currentQ, currQIndex, hints, fiftySixty } = this.state;
 
         return (
             <Fragment>
@@ -296,7 +336,8 @@ class Play extends Component {
                     <h2>Uhadni ma!</h2>
                     <div className="lifeline-container">
                         <p>
-                            <span className="mdi mdi-set-center mdi-24px mdi-lightbulb-fluorescent-tube-outline"></span><span className="lifeline">3</span>
+                            <span className="mdi mdi-set-center mdi-24px mdi-lightbulb-fluorescent-tube-outline"></span>
+                            <span className="lifeline"> { fiftySixty }</span>
                         </p>
                         <p>
                             <span className="mdi mdi-lightbulb-on-outline mdi-24px mdi-lightbulb-fluorescent-tube-outline"></span>
@@ -329,7 +370,10 @@ class Play extends Component {
                         </Draggable>
 
                         <Droppable types={['foo']} onDrop={ this.handleDrop }>
-                            <div>Potiahni sem pre pomocku</div>
+                            <div>Potiahni panáčika sem pre pomocku</div>
+                        </Droppable>
+                        <Droppable types={['foo']} onDrop={ this.fiftyDrop }>
+                            <div>Potiahni panáčika sem pre riesenie</div>
                         </Droppable>
                     </div>
                 </div>
