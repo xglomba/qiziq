@@ -1,5 +1,9 @@
 # Instrukcie na spustenie react appky, webstorm odporucam.
 
+pre zbuildenie :
+    1. npm run build (npm 19.1.0)
+    2. sudo npm install -g serve
+    3. npx serve -s build
 
 # Getting Started with Create React App 
 
