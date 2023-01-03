@@ -4,13 +4,12 @@ import M from 'materialize-css';
 import {createBrowserRouter, useNavigate} from "react-router-dom";
 import { Draggable, Droppable } from 'react-drag-and-drop';
 
-
 import questions from '../../questions.json';
 import correctASound from '../../assets/sounds/suc.mp3';
 import incorrectASound from '../../assets/sounds/fail.mp3';
 import click from '../../assets/sounds/click.mp3';
 
-var increment = 1;
+let increment = 1;
 
 function isEmpty(strIn)
 {
@@ -24,6 +23,7 @@ function isEmpty(strIn)
     }
     else return strIn === "";
 }
+
 
 const isEmpty2 = (value) =>
     value === undefined || value == null || (typeof value === 'object' && Object.keys(value).length === 0) || (typeof value === 'string' && value.trim().length === 0);
@@ -48,7 +48,8 @@ class Play extends Component {
             hints: 5,
             fiftySixty: 2,
             usedFiftySixty: false,
-            time: {}
+            time: {},
+            prevRandomNumber: []
         };
 
     }
@@ -74,7 +75,10 @@ class Play extends Component {
                 prevQ: prevQ,
                 numOfQ: questions.length,
                 answer: answer,
-                currQIndex: currQIndex
+                currQIndex: currQIndex,
+                prevRandomNumber: []
+            }, () => {
+                this.showOptions();
             });
         }
     };
@@ -222,15 +226,61 @@ class Play extends Component {
         });
     }
 
-    handleDrop(data, event) {
-        // This method runs when the data drops
-        console.log(data); // 'bar'
+    handleDrop = () => {
+        console.log("dropppp"); // 'bar'
+        //this.state.hints = this.state.hints - increment;
+
+        if (this.state.hints > 0 || this.state.hints !== 0) {
+            const options = Array.from(document.querySelectorAll(".option"));
+            //console.log(options);
+
+            let indexOfAnswer;
+
+            options.forEach((option, index) => {
+                if (option.innerHTML.toLowerCase() === this.state.answer.toLowerCase()) {
+                    indexOfAnswer = index;
+                }
+            });
+
+            while (true) {
+                const random = Math.round(Math.random() * 3);
+
+                if (random !== indexOfAnswer && !this.state.prevRandomNumber.includes(random)) {
+                    options.forEach((option, index) => {
+                        if (index === random) {
+                            option.style.backgroundColor = "red";
+                            this.setState((prevState) => ({
+                                hints: prevState.hints - increment,
+                                prevRandomNumber: prevState.prevRandomNumber.concat(random)
+                            }));
+                        }
+                    });
+                    break; //wow
+                }
+                if (this.state.prevRandomNumber.length >= 3) {
+                    break;
+                }
+            }
+        }
+
+
+        //document.getElementById("correctS").play();
+        //this.handleDrop();
+        //console.log(event.target.innerHTML);
+    }
+
+    showOptions = () => {
+        const options = Array.from(document.querySelectorAll(".option"));
+
+        options.forEach((option, index) => {
+            option.style.backgroundColor = "dodgerblue";
+        });
     }
 
     render() {
         //console.log(questions)
 
-        const { currentQ, currQIndex } = this.state;
+        const { currentQ, currQIndex, hints } = this.state;
 
         return (
             <Fragment>
@@ -249,7 +299,8 @@ class Play extends Component {
                             <span className="mdi mdi-set-center mdi-24px mdi-lightbulb-fluorescent-tube-outline"></span><span className="lifeline">3</span>
                         </p>
                         <p>
-                            <span className="mdi mdi-lightbulb-on-outline mdi-24px mdi-lightbulb-fluorescent-tube-outline"></span><span className="lifeline">5</span>
+                            <span className="mdi mdi-lightbulb-on-outline mdi-24px mdi-lightbulb-fluorescent-tube-outline"></span>
+                            <span className="lifeline">{ hints }</span>
                         </p>
                     </div>
                     <div>
@@ -272,17 +323,17 @@ class Play extends Component {
                         <button id="next-button" onClick={ this.handleButtonClick }>Nasledujuca</button>
                         <button id="quit-button" onClick={ this.handleButtonClick }>Vzdavam sa!</button>
                     </div>
+                    <div>
+                        <Draggable type="foo" data="bar">
+                            <span className="mdi mdi-account-supervisor-outline mdi-24px"></span><span className="lifeline"></span>
+                        </Draggable>
 
+                        <Droppable types={['foo']} onDrop={ this.handleDrop }>
+                            <div>Potiahni sem pre pomocku</div>
+                        </Droppable>
+                    </div>
                 </div>
-                <div>
-                    <Draggable type="foo" data="bar">
-                        <div>Drag me!</div>
-                    </Draggable>
 
-                    <Droppable types={['foo']} onDrop={this.handleDrop}>
-                        <div>Drop here!</div>
-                    </Droppable>
-                </div>
 
             </Fragment>
         );
