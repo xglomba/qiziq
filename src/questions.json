@@ -1,36 +1,36 @@
 [
   {
-    "question": "Kto je najkrajsi na svete?",
-    "optionA": "ja",
-    "optionB": "on",
-    "optionC": "ona",
-    "optionD": "ty",
-    "answer": "ona"
+    "question": "Koľko žalúdkov ma krava?",
+    "optionA": "1",
+    "optionB": "2",
+    "optionC": "3",
+    "optionD": "4",
+    "answer": "4"
   },
 
   {
-    "question": "kolko je derviacia zo 7 dpc?",
-    "optionA": "Jan Sefcik",
-    "optionB": "0",
-    "optionC": "Samsung",
-    "optionD": "Samsong",
-    "answer": "Jan Sefcik"
+    "question": "Koľko je integrál z cons(x)?",
+    "optionA": "sin(x)",
+    "optionB": "-sin(x)",
+    "optionC": "1/ln(x)",
+    "optionD": "sin(x) + C",
+    "answer": "sin(x) + C"
   },
 
   {
-    "question": "Drzitelom akeho titulu je Karolina Zakova?",
-    "optionA": "Html",
-    "optionB": "Jackson silver hand",
-    "optionC": "CSS",
-    "optionD": "XML",
-    "answer": "Jan Sefcik"
+    "question": "Čo na Zemi spôsobuje príliv a odliv?",
+    "optionA": "Rotácia Zeme",
+    "optionB": "Učiteľka matematiky na základke",
+    "optionC": "Mesiac",
+    "optionD": "Slnko",
+    "answer": "Mesiac"
   },
 
   {
     "question": "Kto/čo je Carolina Reaper?",
     "optionA": "Čili paprička",
-    "optionB": "Ján Sefcik",
-    "optionC": "Tvoja mama",
+    "optionB": "Klasické japonské predjedlo",
+    "optionC": "Cross-country motorka",
     "optionD": "Speváčka",
     "answer": "Čili paprička"
   },
@@ -38,17 +38,17 @@
   {
     "question": "Aké je hlavné mesto planéty Zem?",
     "optionA": "Žiadne",
-    "optionB": "Dolný Kubín",
+    "optionB": "Sydney",
     "optionC": "Vranov nad Topľov",
-    "optionD": "Tak vám dobre jebe",
+    "optionD": "Washington",
     "answer": "Žiadne"
   },
 
   {
     "question": "Čo znamená RFC?",
     "optionA": "Request for comments",
-    "optionB": "Kali",
-    "optionC": "Relatively flaccid cockraoch",
+    "optionB": "Recently formatting canyon",
+    "optionC": "Relatively flaccid cockroach",
     "optionD": "Repeatedly fluctuating comrade",
     "answer": "Request for comments"
   },
@@ -60,5 +60,59 @@
     "optionC": "Áno",
     "optionD": "Deveď",
     "answer": "Áno"
+  },
+
+  {
+    "question": "Aké je hlavné mesto Aliancie v hre World of Warcraft?",
+    "optionA": "Orgrimar",
+    "optionB": "Stormwind",
+    "optionC": "Undercity",
+    "optionD": "Ironforge",
+    "answer": "Stormwind"
+  },
+
+  {
+    "question": "Čo je to 'blefaroptóza'?",
+    "optionA": "Pooperačný stav",
+    "optionB": "Zápal slepého čreva",
+    "optionC": "Otrava krvy",
+    "optionD": "Pokles horného viečka oka",
+    "answer": "Pokles horného viečka oka"
+  },
+
+  {
+    "question": "Koľko bielkovín ma bežná konzerva tuniaka?",
+    "optionA": "10",
+    "optionB": "15",
+    "optionC": "20",
+    "optionD": "25",
+    "answer": "25"
+  },
+
+  {
+    "question": "Akou klávesovou skratkou sa vo Windowse vyvolá Windows Explorer?",
+    "optionA": "Win + X",
+    "optionB": "Win + E",
+    "optionC": "Alt + F4",
+    "optionD": "Ctrl + Shift + E",
+    "answer": "Win + E"
+  },
+
+  {
+    "question": "V ktorom roku zomrel Kobe Bryant?",
+    "optionA": "2020",
+    "optionB": "2021",
+    "optionC": "2019",
+    "optionD": "2018",
+    "answer": "2020"
+  },
+
+  {
+    "question": "Ktorý štát vyhral Majstrovstvá sveta vo futbale 2018?",
+    "optionA": "Uruguaj",
+    "optionB": "Argentína",
+    "optionC": "Francúzsko",
+    "optionD": "Chorvátsko",
+    "answer": "Francúzsko"
   }
 ]
