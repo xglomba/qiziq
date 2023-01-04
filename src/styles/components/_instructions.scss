@@ -1,5 +1,5 @@
-#home {
-  background-image: url('../../assets/bg.png');
+#homee {
+  background-image: url('assets/bg.png');
   background-size: cover;
   background-position: center;
   height: 100vh;
@@ -7,8 +7,8 @@
   display: flex;
   justify-content: space-around;
 
-  section {
-    background-color: rgba(1,0,0,0.5);
+    section {
+    background-color: rgba(0,0,0,0.5);
     padding-left: 2rem;
     padding-right: 2rem;
     height: 80%;
@@ -36,7 +36,7 @@
   }
 
   a.play-button {
-    background-color: springgreen;
+    background-color: coral;
     color: azure;
     cursor: pointer;
     padding: 1rem;
@@ -63,7 +63,7 @@
 
   a.play-button:hover {
     transform: scale(1.20);
-    background-color: darken(springgreen, 20);
+    background-color: darken(coral, 20);
   }
 
   a.ins-button:hover {

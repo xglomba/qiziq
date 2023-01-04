@@ -396,6 +396,9 @@ class Play extends Component {
 
         };
 
+        alert("Nahral si: " + playerStat.currectA + "body\n"
+        + "Vyuzil si: " + playerStat.hints + " zolikov a " + playerStat.fiftySixtyUsed + " napovedy");
+
         console.log(playerStat);
         setTimeout(() => {
             this.props.history.push("/"); // preco to nic nevracia neviem

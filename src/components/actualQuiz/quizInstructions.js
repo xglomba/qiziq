@@ -13,7 +13,7 @@ const QuizInstructions = () => (
         <Helmet>
             <title>QiziQ - Inštrukcie</title>
         </Helmet>
-        <div className="instructions container" id={"penis"}>
+        <div id="home">
             <section>
                 <h1>Inštruktáž k hre</h1>
                 <p> Názov QiziQ môže byť už pre naše nadčasové mozgy mätúci, preto treba hneď uviesť, že sa jedná o klasický "kvíz".

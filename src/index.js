@@ -5,6 +5,7 @@ import 'materialize-css/dist/css/materialize.min.css'
 import 'materialize-css/dist/js/materialize.min'
 import './styles/style.scss';
 import App from './App';
+import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -12,3 +13,4 @@ root.render(
     <App />
   </React.StrictMode>
 );
+serviceWorkerRegistration.register(); //pwa
